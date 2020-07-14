@@ -105,6 +105,25 @@ class Graph:
                         return new_current_node
                 visited.add(node)
 
+        # CLASS SOLUTION
+        # q = Queue()
+        # visited = set()
+        # path = [starting_vertex]
+        # q.enqueue(path)
+
+        # while q.size() > 0:
+        #     current_path = q.dequeue()
+        #     current_node = current_path[-1]
+        #     if current_node == destination_vertex:
+        #         return current_path
+        #     if current_node not in visited:
+        #         visited.add(current_node)
+        #         neighbors = self.get_neighbors(current_node):
+        #             for neighbor in neighbors:
+        #                 path_copy = list(current_path)
+        #                 q.enqueue(path_copy)
+
+
     def dfs(self, starting_vertex, destination_vertex):
         """
         Return a list containing a current_node from
@@ -144,6 +163,8 @@ class Graph:
         visited.add(starting_vertex)
         if starting_vertex == destination_vertex:
             return path
+        if len(path) == 0:
+            path.append(starting_vertex)
         neighbors = self.get_neighbors(starting_vertex)
         for neighbor in neighbors:
             if neighbor not in visited:
@@ -151,27 +172,17 @@ class Graph:
                 if new_path:
                     return new_path
 
-        ##################################
-        # s = Stack()
-        # s.push([starting_vertex])
-
-        # visited = set()
-
+        # #CLASS SOLUTION
+        # visited.add(starting_vertex)
         # if starting_vertex == destination_vertex:
-        #     return
-        # while s.size() > 0:
-        #     current_node = s.pop()
-        #     node = current_node[-1]
-        #     if node not in visited:
-        #         neighbors = self.get_neighbors(node)
-        #         for neighbor in neighbors:
-        #             new_current_node = list(current_node)
-        #             new_current_node.append(neighbor)
-        #             s.push(new_current_node)
-        #             if neighbor == destination_vertex:
-        #                 return new_current_node
-        #         visited.add(node)
-
+        #     return path
+        # neighbors = self.get_neighbors(starting_vertex)
+        # for neighbor in neighbors:
+        #     if neighbor not in visited:
+        #         result = self.dfs_recursive(neighbor, destination_vertex, path + neighbor, visited)
+        #         if result is not None:
+        #             return result
+  
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph
     # https://github.com/LambdaSchool/Graphs/blob/master/objectives/breadth-first-search/img/bfs-visit-order.png
