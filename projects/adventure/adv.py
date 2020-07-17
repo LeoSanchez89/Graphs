@@ -51,16 +51,6 @@ traversal_path = []
 my_map = {}
 not_explored = ''
 
-def opposite(direc):
-    if direc == 'n':
-        return 's'
-    if direc == 's':
-        return 'n'
-    if direc == 'w':
-        return 'e'
-    if direc == 'e':
-        return 'w'
-
 while len(my_map) < len(room_graph):
 
     # creates dictionary entry for each new room with exits and next rooms
